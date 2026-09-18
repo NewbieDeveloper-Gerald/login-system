@@ -3,6 +3,9 @@
 // Example: const API_URL = "https://login-system-api.onrender.com";
 const API_URL = "http://localhost:5000";
 
+// Initialize Lucide Icons
+lucide.createIcons();
+
 // DOM Elements
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
@@ -36,14 +39,24 @@ if (showLoginBtn) {
 // Toggle password visibility
 togglePasswordBtns.forEach(btn => {
   btn.addEventListener("click", function() {
-    const input = this.previousElementSibling;
+    const wrapper = this.closest('.password-wrapper');
+    const input = wrapper.querySelector('input');
+    const icon = this.querySelector('i');
+    
     if (input.type === "password") {
       input.type = "text";
-      this.textContent = "🙈";
+      icon.setAttribute("data-lucide", "eye-off");
     } else {
       input.type = "password";
-      this.textContent = "👁️";
+      icon.setAttribute("data-lucide", "eye");
     }
+    // Re-render the icon
+    lucide.createIcons({
+      attrs: {
+        class: 'eye-icon'
+      },
+      nameAttr: 'data-lucide'
+    });
   });
 });
 
@@ -174,7 +187,6 @@ function initDashboard() {
   
   const userNameEl = document.getElementById("userName");
   const userEmailEl = document.getElementById("userEmail");
-  const userInitialsEl = document.getElementById("userInitials");
   const dashboardMessageEl = document.getElementById("dashboardMessage");
   const logoutBtn = document.getElementById("logout");
   
@@ -199,14 +211,7 @@ function initDashboard() {
     if(userNameEl) userNameEl.textContent = data.user.name;
     if(userEmailEl) userEmailEl.textContent = data.user.email;
     
-    if(userInitialsEl && data.user.name) {
-      // Get first letter of first and last name, or just first two letters
-      const names = data.user.name.split(' ');
-      let initials = names[0].charAt(0);
-      if(names.length > 1) initials += names[names.length - 1].charAt(0);
-      else if(data.user.name.length > 1) initials += data.user.name.charAt(1);
-      userInitialsEl.textContent = initials.toUpperCase();
-    }
+    // We removed initials and just use the user icon in the dashboard avatar now
   })
   .catch(error => {
     console.error("Auth Error:", error);
