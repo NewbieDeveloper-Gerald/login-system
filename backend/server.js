@@ -9,7 +9,28 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "*",
+  origin: function (origin, callback) {
+    const allowedURL = process.env.FRONTEND_URL;
+
+    // Allow requests with no origin (mobile apps, curl, server-to-server)
+    if (!origin) return callback(null, true);
+
+    // If no FRONTEND_URL is set, allow all origins
+    if (!allowedURL) return callback(null, true);
+
+    // Allow if origin matches exactly OR if it's a Vercel preview URL
+    // Vercel generates: project-name.vercel.app, project-name-git-branch-user.vercel.app, etc.
+    if (origin === allowedURL || origin.endsWith(".vercel.app")) {
+      return callback(null, true);
+    }
+
+    // Also allow localhost for development
+    if (origin.includes("localhost") || origin.includes("127.0.0.1")) {
+      return callback(null, true);
+    }
+
+    callback(new Error("Not allowed by CORS"));
+  },
   credentials: true
 }));
 app.use(express.json());
