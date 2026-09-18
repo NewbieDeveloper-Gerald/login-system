@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-wrapper">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <main class="card dashboard-card">
+    <div class="dashboard-header">
+      <div class="avatar" id="userInitials">--</div>
+      <h1>Dashboard</h1>
+      <p class="subtitle">Secure Area</p>
+    </div>
+
+    <div class="user-info-box">
+      <div class="info-row">
+        <span class="info-label">Name</span>
+        <span class="info-value" id="userName">Loading...</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value" id="userEmail">Loading...</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Status</span>
+        <span class="info-value status-active">● Active</span>
+      </div>
+    </div>
+    
+    <p id="dashboardMessage" class="status-message"></p>
+
+    <button id="logout" class="outline-btn">Logout</button>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    // Dashboard specific logic - app.js handles auth check
+    document.addEventListener('DOMContentLoaded', () => {
+      initDashboard();
+    });
+  </script>
+</body>
+</html>

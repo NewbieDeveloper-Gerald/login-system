@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Login System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-wrapper">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  
+  <main class="card">
+    <!-- Login Form -->
+    <div id="loginSection">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Sign in to your account</p>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="••••••••">
+            <button type="button" class="toggle-password" tabindex="-1" aria-label="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="loginBtn" class="primary-btn">
+          <span class="btn-text">Sign In</span>
+          <span class="spinner hidden"></span>
+        </button>
+        <p id="message" class="status-message"></p>
+      </form>
+
+      <p class="switch-form">Don't have an account? <a href="#" id="showRegister">Create one</a></p>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerSection" class="hidden">
+      <h1>Create Account</h1>
+      <p class="subtitle">Join us today</p>
+
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="John Doe">
+        </div>
+
+        <div class="input-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="input-group">
+          <label for="regPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="regPassword" name="password" required autocomplete="new-password" placeholder="Min. 6 characters">
+            <button type="button" class="toggle-password" tabindex="-1" aria-label="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="registerBtn" class="primary-btn">
+          <span class="btn-text">Register</span>
+          <span class="spinner hidden"></span>
+        </button>
+        <p id="registerMessage" class="status-message"></p>
+      </form>
+
+      <p class="switch-form">Already have an account? <a href="#" id="showLogin">Sign in</a></p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
