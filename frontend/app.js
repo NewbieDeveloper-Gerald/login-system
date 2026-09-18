@@ -39,22 +39,17 @@ togglePasswordBtns.forEach(btn => {
   btn.addEventListener("click", function() {
     const wrapper = this.closest('.password-wrapper');
     const input = wrapper.querySelector('input');
-    const icon = this.querySelector('i');
     
     if (input.type === "password") {
       input.type = "text";
-      icon.setAttribute("data-lucide", "eye-off");
+      this.innerHTML = '<i data-lucide="eye-off" class="eye-icon"></i>';
     } else {
       input.type = "password";
-      icon.setAttribute("data-lucide", "eye");
+      this.innerHTML = '<i data-lucide="eye" class="eye-icon"></i>';
     }
+    
     // Re-render the icon
-    lucide.createIcons({
-      attrs: {
-        class: 'eye-icon'
-      },
-      nameAttr: 'data-lucide'
-    });
+    lucide.createIcons();
   });
 });
 
