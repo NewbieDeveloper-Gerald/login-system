@@ -1,7 +1,7 @@
 // Configuration
 // CHANGE THIS TO YOUR RENDER URL BEFORE DEPLOYMENT
 // Example: const API_URL = "https://login-system-api.onrender.com";
-const API_URL = "http://localhost:5000";
+const API_URL = "https://login-system-api-xxxx.onrender.com";
 
 // Initialize Lucide Icons
 lucide.createIcons();
